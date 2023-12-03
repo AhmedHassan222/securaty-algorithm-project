@@ -1,0 +1,62 @@
+.content {
+    padding: 20px;
+
+}
+
+
+textarea {
+    width: 90%;
+    height: 40vh;
+    padding: 20px;
+    font-size: 20px;
+    resize: none;
+    transition: all 0.4s;
+
+}
+textarea:hover 
+{
+    background-color: whitesmoke;
+}
+select 
+{
+    width: 25%;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    margin: auto;
+}
+
+.one {
+    width: 100%;
+    padding: 10px;
+}
+
+.two {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    border: green solid 3px;
+    font-weight: bold;
+    font-size: 20px;
+    color: green;
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+
+}
+button:hover 
+{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
