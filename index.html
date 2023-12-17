@@ -10,20 +10,14 @@
 
 <body>
     <div class="content">
-
-
-
-
         <div class="d-flex">
             <div class="one">
                 <h3>Enter Text</h3>
                 <textarea name="" id="input1" cols="30" rows="3"></textarea>
                 <button id="convert">Convert</button>
-
             </div>
             <div class="two">
                 <div class="d-flex">
-
                     <div>
                         <h3>Select algorithm: </h3>
                         <input type="radio" id="Ceaser" name="algorithm" value="Ceaser">
@@ -35,33 +29,24 @@
                     </div>
                 </div>
                 <div class="d-flex">
-
                     <div>
                         <h3>Selet what do you want: </h3>
                         <input type="radio" id="Encripte" name="type" value="Encripte">
                         <label for="Encripte">Encripte</label>
                         <input type="radio" id="Decripte" name="type" value="Decripte">
                         <label for="Decripte">Decripte</label>
-
                     </div>
                 </div>
                 <div class="d-flex">
-                    <input type="text" class="special" placeholder="Enter Key ">
-                    <div id="appearWhenSelectAffine" class="d-flex">
+                    <input id="key" class="d-block" type="text" class="special" placeholder="Enter Key ">
+                    <div id="appearWhenSelectAffine" class="d-none">
                         <input type="text" class="special" placeholder="Enter A ">
                         <input type="text" class="special" placeholder="Enter B ">
                     </div>
-
                 </div>
-
             </div>
         </div>
-
-
     </div>
-
-
-
     <script src="script.js"></script>
 </body>
 
