@@ -1,25 +1,30 @@
-const caesarCipher = (str, shift, decrypt = false) => {
-    const s = decrypt ? (26 - shift) % 26 : shift;
-    const n = s > 0 ? s : 26 + (s % 26);
-    return [...str]
-        .map((l, i) => {
-            const c = str.charCodeAt(i);
-            if (c >= 65 && c <= 90)
-                return String.fromCharCode(((c - 65 + n) % 26) + 65);
-            if (c >= 97 && c <= 122)
-                return String.fromCharCode(((c - 97 + n) % 26) + 97);
-            return l;
-        })
-        .join('');
-};
+const AlgorithmsButtons = document.querySelectorAll('input[name="algorithm"]');
+const TypeButtons = document.querySelectorAll('input[name="type"]');
+let selectedAlgorithm;
+let selectedType;
+let key;
+document.querySelector('#convert').addEventListener('click', function () {
 
-caesarCipher('Hello World!', -3); // 'Ebiil Tloia!'
-caesarCipher('Ebiil Tloia!', 23, true); // '
-
-let input1= document.querySelector('#input1')
-let input2= document.querySelector('#input2')
-document.querySelector('#convert').addEventListener('click',function(){
-    
-    input2.value = caesarCipher(input1.value, -3); // 'Ebiil Tloia!'
-
+    for (const typeButton of TypeButtons) {
+        if (typeButton.checked) {
+            selectedType = typeButton.value;
+            break;
+        }
+    }
+    key = document.querySelector('.special').value;
+    if (selectedAlgorithm != undefined && selectedType != undefined && key != '') {
+        //Write code here
+        //>>>>>>>>>>>>>>>
+        //...............
+    }
 })
+
+
+
+for (const algorithmButton of AlgorithmsButtons) {
+    if (algorithmButton.checked) {
+        selectedAlgorithm = algorithmButton.value;
+        console.log(selectedAlgorithm)
+        break;
+    }
+}
