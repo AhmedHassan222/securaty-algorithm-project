@@ -11,13 +11,8 @@
 
 <body>
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-6">
-                <h3>Enter Text</h3>
-                <textarea class="w-100 my-2 p-2 fs-4" name id="input1" cols="40" rows="6"></textarea>
-
-            </div>
-            <div class="col-6 align-self-center">
+        <div class="row g-3">
+            <div class="col-4 align-self-center">
                 <div class="d-flex ">
                     <div>
                         <h3>Select algorithm: </h3>
@@ -38,23 +33,40 @@
                         <label for="Decripte">Decripte</label>
                     </div>
                 </div>
-                <div class="d-flex">
-                    <input id="key" type="text" class="special p-1 w-50 d-block" placeholder="Enter Key ">
-                    <div id="appearWhenSelectAffine" class="d-none">
-                        <input id="typeA" type="text" class="p-1 mb-2" placeholder="Enter A ">
-                        <input id="typeB" type="text" class="p-1" placeholder="Enter B ">
+                <div>
+                    <h3 class="mb-3">Enter Key: </h3>
+                    <input id="key" type="text" class="special p-1 w-50 d-block" placeholder="Key ">
+                    <div id="appearWhenSelectAffine" class="d-none b">
+                        <input id="typeA" type="text" class="p-1 w-25" placeholder="Enter A ">
+                        <input id="typeB" type="text" class="p-1 w-25" placeholder="Enter B ">
                     </div>
                 </div>
             </div>
+            <div class="col-4">
+                <h3>Enter Text</h3>
+                <div class="d-flex">
+                    <textarea class="w-100 my-2 p-2 fs-4" id="input1" cols="40" rows="4"></textarea>
+
+                </div>
+
+                <button class="btn btn-success  py-1 btn-lg w-100" id="convert">Convert</button>
+
+
+            </div>
+            <div class="col-4 align-self-center">
+                <div class="d-flex">
+                    <textarea class="w-100 my-2 p-2 fs-4" id="output" cols="40" rows="4" readonly></textarea>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="d-flex justify-content-center mt-4 ">
-            <button  class="btn btn-success  py-2 px-3 btn-lg" id="convert">Convert</button>
-        </div>
+
     </div>
 
-    <div class="text-danger text-center fixed-top p-3 fs-5  ">
-        <div id="warning" class="d-none">*please fill all inputes</div>
-    </div>
+    <div id="warning" class="d-none bg-white text-center p-2 fs-5   text-danger fit-content mx-auto  ">*please
+        fill all inputes</div>
 
     <script src="jquery-3.7.0.min.js"></script>
     <script src="bootstrap.bundle.min.js"></script>

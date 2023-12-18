@@ -1,4 +1,3 @@
-
 // variable >>>>>>
 const AlgorithmsButtons = document.querySelectorAll('input[name="algorithm"]');
 const TypeButtons = document.querySelectorAll('input[name="type"]');
@@ -9,12 +8,11 @@ let TypeSelected;
 let typeA = document.querySelector('#typeA');
 let typeB = document.querySelector("#typeB")
 let warning = document.querySelector("#warning")
-
-
+let output = document.querySelector("#output")
 // what algorithm you are click  in 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for (let i = 0; i < AlgorithmsButtons.length; i++) {
-    AlgorithmsButtons[i].addEventListener('click', function (e) {
+    AlgorithmsButtons[i].addEventListener('click', function () {
         if (AlgorithmsButtons[i].value == "Affine") {
             document.querySelector("#appearWhenSelectAffine").classList.replace('d-none', 'd-block');
             document.querySelector('#key').classList.replace('d-block', 'd-none')
@@ -25,19 +23,15 @@ for (let i = 0; i < AlgorithmsButtons.length; i++) {
         AlgorithmSelected = AlgorithmsButtons[i].value;
     })
 }
-
 // what type you are click in
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for (let i = 0; i < TypeButtons.length; i++) {
-    TypeButtons[i].addEventListener('click', function (e) {
+    TypeButtons[i].addEventListener('click', function () {
         TypeSelected = TypeButtons[i].value;
     })
 }
-
 // function convert (encription , decription )
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
 document.querySelector("#convert").addEventListener('click', function () {
     if (AlgorithmSelected != undefined && TypeSelected != undefined && key.value != '' && input1.value != '' && AlgorithmSelected != "Affine") {
         warning.classList.replace('d-block', 'd-none')
@@ -45,127 +39,152 @@ document.querySelector("#convert").addEventListener('click', function () {
         if (AlgorithmSelected == "Ceaser") {
             if (TypeSelected == "Encripte") {
                 // do encripte with ceaser
+                output.innerHTML = encryptCeaser(input1.value, Number(key.value));
             } else {
                 // do decripte with ceaser
+                output.innerHTML = decryptCeaser(input1.value, Number(key.value));
             }
         } else {
             if (TypeSelected == "Encripte") {
                 // do Encripte with viginer
+                output.innerHTML = encryptViginere(input1.value, key.value);
             } else {
                 // do decripte with viginer
+                output.innerHTML = decryptViginere(input1.value, key.value);
             }
         }
     } else if (AlgorithmSelected != undefined && TypeSelected != undefined && input1.value != '' && AlgorithmSelected == "Affine" && typeA.value != "" && typeB.value != '') {
         warning.classList.replace('d-block', 'd-none')
         if (TypeSelected == "Encripte") {
             // do Encripte with affine
+            output.innerHTML = encryptAffine(input1.value, Number(typeA.value), Number(typeB.value));
+            console.log('encr affine')
         } else {
             // do decripte with affine
+            output.innerHTML = decryptAffine(input1.value, Number(typeA.value), Number(typeB.value));
         }
     } else {
         warning.classList.replace('d-none', 'd-block')
     }
 })
-
-//
-// /// Ceaser Algorithm
-// //>>>>>>>>>>>>>>>>>>>>>>
-
-// //1.Encrypt >>>>>>
-// function encrypt(text, key) {
-//     let result = '';
-//     for (let i = 0; i < text.length; i++) {
-//         let charCode = text.charCodeAt(i);
-//         if (charCode >= 65 && charCode <= 90) {
-//             result += String.fromCharCode((charCode - 65 + key) % 26 + 65);
-//         } else if (charCode >= 97 && charCode <= 122) {
-//             result += String.fromCharCode((charCode - 97 + key) % 26 + 97);
-//         } else {
-//             result += text.charAt(i);
-//         }
-//     }
-//     return result;
-// }
-
-// //2.Decrypt >>>>>>>>>>
-// function decrypt(text, key) {
-//     let result = '';
-//     for (let i = 0; i < text.length; i++) {
-//         let charCode = text.charCodeAt(i);
-//         if (charCode >= 65 && charCode <= 90) {
-//             result += String.fromCharCode((charCode - 65 - key + 26) % 26 + 65);
-//         } else if (charCode >= 97 && charCode <= 122) {
-//             result += String.fromCharCode((charCode - 97 - key + 26) % 26 + 97);
-//         } else {
-//             result += text.charAt(i);
-//         }
-//     }
-//     return result;
-// }
-
-// // take text input and the key from user
-// let text = prompt('Enter the text you want to encrypt/decrypt:');
-// let key = parseInt(prompt('Enter the key number:'));
-// let mode = prompt('Do you want to encrypt or decrypt?');
-
-// if (mode.toLowerCase() === 'encrypt') {
-//     let encryptedText = encrypt(text, key);
-//     console.log('Encrypted Text:', encryptedText);
-// } else if (mode.toLowerCase() === 'decrypt') {
-//     let decryptedText = decrypt(text, key);
-//     console.log('Decrypted Text:', decryptedText);
-// } else {
-//     console.log('Invalid mode selected. Please choose "encrypt" or "decrypt".');
-// }
-
-
-
-// let set = {
-//     'a': 0,
-//     'b': 1,
-//     'c': 2,
-//     'd': 3,
-//     'e': 4,
-//     'f': 5,
-//     'g': 6,
-//     'h': 7,
-//     'i': 8,
-//     'j': 9,
-//     'k': 10,
-//     'l': 11,
-//     'm': 12,
-//     'n': 13,
-//     'o': 14,
-//     'p': 15,
-//     'q': 16,
-//     'r': 17,
-//     's': 18,
-//     't': 19,
-//     'u': 20,
-//     'v': 21,
-//     'w': 22,
-//     'x': 23,
-//     'y': 24,
-//     'z': 25,
-// }
-
-
-// let n = 26;
-// let result = "";
-
-// let x = Object.keys(set)
-// console.log(x)
-// function encription(text, key) {
-//     for (let i = 0; i < text.length; i++) {
-
-//         for (let j = 0; j < x.length; j++) {
-//             if ((set[text[i]] + key) % n == set[x[j]]) {
-//                 result += x[j]
-
-//             }
-//         }
-//     }
-//     console.log(result)
-// }
-
+/// Algorithms here
+//1. CEASER ALGORITHM >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function encryptCeaser(text, key) {
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            result += String.fromCharCode((charCode - 65 + key) % 26 + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+            result += String.fromCharCode((charCode - 97 + key) % 26 + 97);
+        } else {
+            result += text.charAt(i);
+        }
+    }
+    return result;
+}
+function decryptCeaser(text, key) {
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            result += String.fromCharCode((charCode - 65 - key + 26) % 26 + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+            result += String.fromCharCode((charCode - 97 - key + 26) % 26 + 97);
+        } else {
+            result += text.charAt(i);
+        }
+    }
+    return result;
+}
+//2.VIGINERE ALGORITHM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+function encryptViginere(plainText, key) {
+    plainText = plainText.toUpperCase();
+    key = key.toUpperCase();
+    let cipherText = "";
+    let keyIndex = 0;
+    for (let i = 0; i < plainText.length; i++) {
+        if (plainText[i].charCodeAt(0) >= 65 && plainText[i].charCodeAt(0) <= 90) {
+            let cipherCharCode = ((plainText[i].charCodeAt(0) - 65) + (key[keyIndex].charCodeAt(0) - 65)) % 26 + 65;
+            cipherText += String.fromCharCode(cipherCharCode);
+            keyIndex = (keyIndex + 1) % key.length;
+        } else {
+            cipherText += plainText[i];
+        }
+    }
+    return cipherText;
+}
+function decryptViginere(cipherText, key) {
+    cipherText = cipherText.toUpperCase();
+    key = key.toUpperCase();
+    let plainText = "";
+    let keyIndex = 0;
+    for (let i = 0; i < cipherText.length; i++) {
+        if (cipherText[i].charCodeAt(0) >= 65 && cipherText[i].charCodeAt(0) <= 90) {
+            let plainCharCode = ((cipherText[i].charCodeAt(0) - 65) - (key[keyIndex].charCodeAt(0) - 65) + 26) % 26 + 65;
+            plainText += String.fromCharCode(plainCharCode);
+            keyIndex = (keyIndex + 1) % key.length;
+        } else {
+            plainText += cipherText[i];
+        }
+    }
+    return plainText;
+}
+// 3. AFFINE ALGORITHM >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Function to calculate gcd (Greatest Common Divisor)
+function gcd(a, b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+// Function to encrypt text
+function encryptAffine(text, a, b) {
+    let encryptedText = '';
+    for (let i = 0; i < text.length; i++) {
+        let charCode = text.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            encryptedText += String.fromCharCode((a * (charCode - 65) + b) % 26 + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+            encryptedText += String.fromCharCode((a * (charCode - 97) + b) % 26 + 97);
+        } else {
+            encryptedText += text.charAt(i);
+        }
+    }
+    return encryptedText;
+}
+// Function to calculate modular multiplicative inverse
+function ModInverse(a, m) {
+    let m0 = m;
+    let y = 0, x = 1;
+    if (m == 1) return 0;
+    while (a > 1) {
+        let q = Math.floor(a / m);
+        let t = m;
+        m = a % m, a = t;
+        t = y;
+        y = x - q * y;
+        x = t;
+    }
+    if (x < 0) {
+        x += m0;
+    }
+    return x;
+}
+// Function to decrypt text
+function decryptAffine(encryptedText, a, b) {
+    let decryptedText = '';
+    let modInverse = ModInverse(a, 26);
+    for (let i = 0; i < encryptedText.length; i++) {
+        let charCode = encryptedText.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            decryptedText += String.fromCharCode((modInverse * (charCode - 65 - b + 26)) % 26 + 65);
+        } else if (charCode >= 97 && charCode <= 122) {
+            decryptedText += String.fromCharCode((modInverse * (charCode - 97 - b + 26)) % 26 + 97);
+        } else {
+            decryptedText += encryptedText.charAt(i);
+        }
+    }
+    return decryptedText;
+}
 

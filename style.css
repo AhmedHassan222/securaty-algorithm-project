@@ -1,14 +1,22 @@
 textarea 
 {
     resize: none;
-}
-textarea:hover 
-{
-    background-color: whitesmoke;
+    text-transform: uppercase;
+
 }
 
-input:focus 
+input:focus , textarea:focus
 
 {
     outline: none;
+}
+
+#output
+{
+    background-color: whitesmoke;
+}
+.fit-content 
+{
+    width: fit-content;
+
 }
