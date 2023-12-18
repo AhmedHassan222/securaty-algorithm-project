@@ -8,6 +8,7 @@ let AlgorithmSelected;
 let TypeSelected;
 let typeA = document.querySelector('#typeA');
 let typeB = document.querySelector("#typeB")
+let warning = document.querySelector("#warning")
 
 
 // what algorithm you are click  in 
@@ -39,24 +40,34 @@ for (let i = 0; i < TypeButtons.length; i++) {
 
 document.querySelector("#convert").addEventListener('click', function () {
     if (AlgorithmSelected != undefined && TypeSelected != undefined && key.value != '' && input1.value != '' && AlgorithmSelected != "Affine") {
+        warning.classList.replace('d-block', 'd-none')
         // do all algorithm without affine
         if (AlgorithmSelected == "Ceaser") {
-            //do ceaser
-            // console.log(input1.value)
-            // console.log(key.value)
-            // encription(input1.value, key.value)
-
+            if (TypeSelected == "Encripte") {
+                // do encripte with ceaser
+            } else {
+                // do decripte with ceaser
+            }
         } else {
-            //do viginere
-            console.log("viginer")
+            if (TypeSelected == "Encripte") {
+                // do Encripte with viginer
+            } else {
+                // do decripte with viginer
+            }
         }
     } else if (AlgorithmSelected != undefined && TypeSelected != undefined && input1.value != '' && AlgorithmSelected == "Affine" && typeA.value != "" && typeB.value != '') {
-        // do affine here
-        console.log("affine");
+        warning.classList.replace('d-block', 'd-none')
+        if (TypeSelected == "Encripte") {
+            // do Encripte with affine
+        } else {
+            // do decripte with affine
+        }
+    } else {
+        warning.classList.replace('d-none', 'd-block')
     }
 })
 
-// 
+//
 // /// Ceaser Algorithm
 // //>>>>>>>>>>>>>>>>>>>>>>
 
