@@ -9,6 +9,7 @@ let typeA = document.querySelector('#typeA');
 let typeB = document.querySelector("#typeB")
 let warning = document.querySelector("#warning")
 let output = document.querySelector("#output")
+
 // what algorithm you are click  in 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for (let i = 0; i < AlgorithmsButtons.length; i++) {
@@ -67,6 +68,25 @@ document.querySelector("#convert").addEventListener('click', function () {
         warning.classList.replace('d-none', 'd-block')
     }
 })
+
+// function reset>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+document.querySelector('#reset').addEventListener("click", function () {
+    reset()
+})
+function reset() {
+    output.innerHTML = ''
+    input1.value = ''
+    key.value = ''
+    warning.classList.replace('d-block', 'd-none')
+    typeA.value = '';
+    typeB.value = '';
+    for (let i = 0; i < AlgorithmsButtons.length; i++) {
+        AlgorithmsButtons[i].checked = false;
+    }
+    for (let i = 0; i < TypeButtons.length; i++) {
+        TypeButtons[i].checked = false;
+    }
+}
 /// Algorithms here
 //1. CEASER ALGORITHM >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function encryptCeaser(text, key) {
@@ -186,5 +206,4 @@ function decryptAffine(encryptedText, a, b) {
         }
     }
     return decryptedText;
-}
-
+} 
