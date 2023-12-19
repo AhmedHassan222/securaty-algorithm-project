@@ -162,7 +162,7 @@ function gcd(a, b) {
     return gcd(b, a % b);
 
 }
-console.log(gcd(26,7));
+console.log(26,7);
 // Function to encrypt text
 function encryptAffine(text, a, b) {
     let encryptedText = '';
@@ -196,7 +196,6 @@ function ModInverse(a, m) {
     }
     return x;
 }
-console.log(ModInverse(7,26))
 // Function to decrypt text
 function decryptAffine(encryptedText, a, b) {
     let decryptedText = '';
