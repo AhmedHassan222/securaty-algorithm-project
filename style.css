@@ -20,6 +20,6 @@ input:focus , textarea:focus
 
 }
 
-body{
-    background-color: whitesmoke;
+.width{
+    width: 40%;
 }

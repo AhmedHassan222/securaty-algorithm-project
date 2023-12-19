@@ -231,11 +231,11 @@ function encryptAffine(text, a, b) {
       } else {
         encryptedText += text.charAt(i);
       }
-      return encryptedText;
     }
   } else {
     console.log("cant do this");
   }
+  return encryptedText;
 }
 // Function to calculate modular multiplicative inverse
 function ModInverse(a, m) {
@@ -275,8 +275,8 @@ function decryptAffine(encryptedText, a, b) {
         decryptedText += encryptedText.charAt(i);
       }
     }
-    return decryptedText;
   } else {
     console.log("cant do this");
   }
+  return decryptedText;
 }

@@ -1,64 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Securaty Algorithmis project</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Securaty Algorithmis project</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-<body>
-    <div class="container py-5 my-4">
-        <div class="row g-3">
-            <div class="col-4 align-self-center">
-                <div class="d-flex ">
+    <body>
+        <div class="container py-5 my-4">
+            <div class="row g-3">
+                <div class="col-md-4 align-self-center">
+                    <div class="d-flex ">
+                        <div>
+                            <h3>Select algorithm: </h3>
+                            <input type="radio" id="Ceaser"
+                                name="algorithm"
+                                value="Ceaser">
+                            <label for="Ceaser">Ceaser</label>
+                            <input type="radio" id="Viginere" name="algorithm"
+                                value="Viginere">
+                            <label for="Viginere">Viginere</label>
+                            <input type="radio" id="Affine" name="algorithm"
+                                value="Affine">
+                            <label for="Affine">Affine</label>
+                        </div>
+                    </div>
+                    <div class="d-flex my-4">
+                        <div>
+                            <h3>Selet what do you want: </h3>
+                            <input type="radio" id="Encripte" name="type"
+                                value="Encripte">
+                            <label for="Encripte">Encripte</label>
+                            <input type="radio" id="Decripte" name="type"
+                                value="Decripte">
+                            <label for="Decripte">Decripte</label>
+                        </div>
+                    </div>
                     <div>
-                        <h3>Select algorithm: </h3>
-                        <input type="radio" id="Ceaser" name="algorithm" value="Ceaser">
-                        <label for="Ceaser">Ceaser</label>
-                        <input type="radio" id="Viginere" name="algorithm" value="Viginere">
-                        <label for="Viginere">Viginere</label>
-                        <input type="radio" id="Affine" name="algorithm" value="Affine">
-                        <label for="Affine">Affine</label>
+                        <h3 class="mb-3">Enter Key: </h3>
+                        <input id="key" type="text"
+                            class="special form-control p-1 w-50 d-block"
+                            placeholder="Key ">
+                        <div id="appearWhenSelectAffine" class="d-none d-flex">
+                            <input id="typeA" type="text"
+                                class="p-1 form-control width   me-3"
+                                placeholder="Enter A ">
+                            <input id="typeB" type="text"
+                                class="p-1 form-control width "
+                                placeholder="Enter B ">
+                        </div>
                     </div>
                 </div>
-                <div class="d-flex my-4">
-                    <div>
-                        <h3>Selet what do you want: </h3>
-                        <input type="radio" id="Encripte" name="type" value="Encripte">
-                        <label for="Encripte">Encripte</label>
-                        <input type="radio" id="Decripte" name="type" value="Decripte">
-                        <label for="Decripte">Decripte</label>
+                <div class="col-md-4">
+                    <h3>Enter Text</h3>
+                    <div class="d-flex">
+                        <textarea class="w-100 my-2 p-2 fs-4" id="input1"
+                            cols="40" rows="4"></textarea>
+
                     </div>
-                </div>
-                <div>
-                    <h3 class="mb-3">Enter Key: </h3>
-                    <input id="key" type="text" class="special p-1 w-50 d-block" placeholder="Key ">
-                    <div id="appearWhenSelectAffine" class="d-none b">
-                        <input id="typeA" type="text" class="p-1 w-25" placeholder="Enter A ">
-                        <input id="typeB" type="text" class="p-1 w-25" placeholder="Enter B ">
+                    <div class="d-flex">
+                        <button class="btn btn-success  py-1 btn-lg me-1"
+                            id="convert">Convert</button>
+                        <button class="btn btn-danger  py-1 btn-lg " id="reset">Reset</button>
                     </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <h3>Enter Text</h3>
-                <div class="d-flex">
-                    <textarea class="w-100 my-2 p-2 fs-4" id="input1" cols="40" rows="4"></textarea>
 
                 </div>
-                <div class="d-flex">
-                    <button class="btn btn-success  py-1 btn-lg me-1" id="convert">Convert</button>
-                    <button class="btn btn-danger  py-1 btn-lg " id="reset">Reset</button>
-                </div>
+                <div class="col-md-4 align-self-start mt-5">
+                    <div class="d-flex mt-2">
+                        <textarea class="w-100 my-2 p-2 fs-4" id="output"
+                            cols="40" rows="4" readonly></textarea>
 
-
-
-            </div>
-            <div class="col-4 align-self-start mt-5">
-                <div class="d-flex mt-2">
-                    <textarea class="w-100 my-2 p-2 fs-4" id="output" cols="40" rows="4" readonly></textarea>
+                    </div>
 
                 </div>
 
@@ -66,16 +81,15 @@
 
         </div>
 
-    </div>
+        <div id="warning"
+            class="d-none  text-center p-2 fs-5   text-danger  mx-auto  fixed-top alert alert-danger  container rounded-0 fs-6">*please
+            fill all inputes</div>
 
-    <div id="warning" class="d-none  text-center p-2 fs-5   text-danger  mx-auto  fixed-top alert alert-danger  container rounded-0 fs-6">*please
-        fill all inputes</div>
+        <script src="jquery-3.7.0.min.js"></script>
+        <script src="bootstrap.bundle.min.js"></script>
 
-    <script src="jquery-3.7.0.min.js"></script>
-    <script src="bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
 
-    <script src="script.js"></script>
-
-</body>
+    </body>
 
 </html>
