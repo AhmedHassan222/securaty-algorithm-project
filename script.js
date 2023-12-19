@@ -8,6 +8,8 @@ let TypeSelected;
 let typeA = document.querySelector("#typeA");
 let typeB = document.querySelector("#typeB");
 let warning = document.querySelector("#warning");
+let warning2 = document.querySelector("#warning2");
+
 let output = document.querySelector("#output");
 
 // what algorithm you are click  in
@@ -119,9 +121,9 @@ function encryptCeaser(text, key) {
   for (let i = 0; i < text.length; i++) {
     let charCode = text.charCodeAt(i);
     if (charCode >= 65 && charCode <= 90) {
-      result += String.fromCharCode(((charCode - 65 + key) % 26) + 65);
+      result += String.fromCharCode(((charCode - 65 + key + 26) % 26) + 65);
     } else if (charCode >= 97 && charCode <= 122) {
-      result += String.fromCharCode(((charCode - 97 + key) % 26) + 97);
+      result += String.fromCharCode(((charCode - 97 + key + 26) % 26) + 97);
     } else {
       result += text.charAt(i);
     }
@@ -232,29 +234,34 @@ function encryptAffine(text, a, b) {
         encryptedText += text.charAt(i);
       }
     }
+    warning2.classList.replace("d-block", "d-none");
   } else {
-    console.log("cant do this");
+    warning2.classList.replace("d-none", "d-block");
   }
   return encryptedText;
 }
 // Function to calculate modular multiplicative inverse
+// function ModInverse(a, m) {
+//   let m0 = m;
+//   let y = 0,
+//     x = 1;
+//   if (m == 1) return 0;
+//   while (a > 1) {
+//     let q = Math.floor(a / m);
+//     let t = m;
+//     (m = a % m), (a = t);
+//     t = y;
+//     y = x - q * y;
+//     x = t;
+//   }
+//   if (x < 0) {
+//     x += m0;
+//   }
+//   return x;
+// }
+
 function ModInverse(a, m) {
-  let m0 = m;
-  let y = 0,
-    x = 1;
-  if (m == 1) return 0;
-  while (a > 1) {
-    let q = Math.floor(a / m);
-    let t = m;
-    (m = a % m), (a = t);
-    t = y;
-    y = x - q * y;
-    x = t;
-  }
-  if (x < 0) {
-    x += m0;
-  }
-  return x;
+  for (let x = 1; x < m; x++) if (((a % m) * (x % m)) % m == 1) return x;
 }
 // Function to decrypt text
 function decryptAffine(encryptedText, a, b) {
@@ -275,8 +282,9 @@ function decryptAffine(encryptedText, a, b) {
         decryptedText += encryptedText.charAt(i);
       }
     }
+    warning2.classList.replace("d-block", "d-none");
   } else {
-    console.log("cant do this");
+    warning2.classList.replace("d-none", "d-block");
   }
   return decryptedText;
 }
