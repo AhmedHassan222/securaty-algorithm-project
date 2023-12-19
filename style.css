@@ -19,3 +19,7 @@ input:focus , textarea:focus
     width: fit-content;
 
 }
+
+body{
+    background-color: whitesmoke;
+}
