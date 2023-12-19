@@ -155,13 +155,14 @@ function decryptViginere(cipherText, key) {
 }
 // 3. AFFINE ALGORITHM >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Function to calculate gcd (Greatest Common Divisor)
-function gcd(a) {
-    if (a == 0) {
+function gcd(a, b) {
+    if (b == 0) {
         return a;
     }
     return gcd(b, a % b);
-}
 
+}
+console.log(gcd(26,7));
 // Function to encrypt text
 function encryptAffine(text, a, b) {
     let encryptedText = '';
@@ -195,6 +196,7 @@ function ModInverse(a, m) {
     }
     return x;
 }
+console.log(ModInverse(7,26))
 // Function to decrypt text
 function decryptAffine(encryptedText, a, b) {
     let decryptedText = '';
@@ -211,3 +213,9 @@ function decryptAffine(encryptedText, a, b) {
     }
     return decryptedText;
 }
+
+
+
+
+
+
