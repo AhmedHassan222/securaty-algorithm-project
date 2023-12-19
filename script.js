@@ -119,14 +119,15 @@ function decryptCeaser(text, key) {
 }
 //2.VIGINERE ALGORITHM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 function encryptViginere(plainText, key) {
-    plainText = plainText.toUpperCase();
-    key = key.toUpperCase();
     let cipherText = "";
     let keyIndex = 0;
     for (let i = 0; i < plainText.length; i++) {
-        if (plainText[i].charCodeAt(0) >= 65 && plainText[i].charCodeAt(0) <= 90) {
-            let cipherCharCode = ((plainText[i].charCodeAt(0) - 65) + (key[keyIndex].charCodeAt(0) - 65)) % 26 + 65;
-            cipherText += String.fromCharCode(cipherCharCode);
+        let charCode = plainText.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            cipherText += String.fromCharCode(((charCode - 65) + (key[keyIndex].toUpperCase().charCodeAt(0) - 65)) % 26 + 65);
+            keyIndex = (keyIndex + 1) % key.length;
+        } else if (charCode >= 97 && charCode <= 122) {
+            cipherText += String.fromCharCode(((charCode - 97) + (key[keyIndex].toLowerCase().charCodeAt(0) - 97)) % 26 + 97);
             keyIndex = (keyIndex + 1) % key.length;
         } else {
             cipherText += plainText[i];
@@ -135,16 +136,18 @@ function encryptViginere(plainText, key) {
     return cipherText;
 }
 function decryptViginere(cipherText, key) {
-    cipherText = cipherText.toUpperCase();
-    key = key.toUpperCase();
     let plainText = "";
     let keyIndex = 0;
     for (let i = 0; i < cipherText.length; i++) {
-        if (cipherText[i].charCodeAt(0) >= 65 && cipherText[i].charCodeAt(0) <= 90) {
-            let plainCharCode = ((cipherText[i].charCodeAt(0) - 65) - (key[keyIndex].charCodeAt(0) - 65) + 26) % 26 + 65;
-            plainText += String.fromCharCode(plainCharCode);
+        let charCode = cipherText.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            plainText += String.fromCharCode(((charCode - 65) - (key[keyIndex].toUpperCase().charCodeAt(0) - 65) + 26) % 26 + 65);
             keyIndex = (keyIndex + 1) % key.length;
-        } else {
+        } else if (charCode >= 97 && charCode <= 122) {
+            plainText += String.fromCharCode(((charCode - 97) - (key[keyIndex].toLowerCase().charCodeAt(0) - 97) + 26) % 26 + 97);
+            keyIndex = (keyIndex + 1) % key.length;
+        }
+        else {
             plainText += cipherText[i];
         }
     }
@@ -152,12 +155,13 @@ function decryptViginere(cipherText, key) {
 }
 // 3. AFFINE ALGORITHM >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Function to calculate gcd (Greatest Common Divisor)
-function gcd(a, b) {
-    if (b == 0) {
+function gcd(a) {
+    if (a == 0) {
         return a;
     }
     return gcd(b, a % b);
 }
+
 // Function to encrypt text
 function encryptAffine(text, a, b) {
     let encryptedText = '';
@@ -206,4 +210,4 @@ function decryptAffine(encryptedText, a, b) {
         }
     }
     return decryptedText;
-} 
+}
